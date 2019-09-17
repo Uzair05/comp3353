@@ -1,3 +1,5 @@
+package assignment1
+
 abstract class SymbolString<T : Symbol>(private val string: List<T>) {
 
     @Override

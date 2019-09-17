@@ -1,3 +1,5 @@
+package assignment1
+
 class Nucleotide(private val symbol: Char) : Symbol(symbol, alphabet) {
 
     companion object {
@@ -53,7 +55,13 @@ class AminoAcid(private val nucleotides: List<Nucleotide>) : SymbolString<Nucleo
 
 fun rnaToProtein(input: String): ProteinString {
     val aminoAcids =
-        input.toCharArray().drop(input.indexOf("AUG")).chunked(3).map { AminoAcid(it.map { char -> Nucleotide(char) }) }
+        input.toCharArray().drop(input.indexOf("AUG")).chunked(3).map {
+            AminoAcid(it.map { char ->
+                Nucleotide(
+                    char
+                )
+            })
+        }
     val trimmedAcids = aminoAcids.subList(0, aminoAcids.indexOfFirst { it.isStopCodon() })
 
     return ProteinString(trimmedAcids.map { ProteinCharacter(it.toCodon()) })

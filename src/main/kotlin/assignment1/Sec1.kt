@@ -1,7 +1,9 @@
-fun Q1(input: String): String {
+package assignment1
+
+fun sec1Q1(input: String): String {
     return DnaString(input).reverseComplement().toString()
 }
 
-fun Q2(input: String): String {
+fun sec1Q2(input: String): String {
     return rnaToProtein(input).toString()
 }
