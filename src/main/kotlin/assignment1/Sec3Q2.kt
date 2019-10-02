@@ -53,6 +53,12 @@ fun main(args: Array<String>) {
         eol.forEach { pendingOutput.addLast(it) }
     }
 
+    while (pendingOutput.isNotEmpty()) {
+        val outputBit = pendingOutput.removeFirst()
+        outputStream.write(outputBit.toString())
+        eol.find { it == outputBit } ?: writePointer++
+    }
+
     outputStream.close()
 
 }

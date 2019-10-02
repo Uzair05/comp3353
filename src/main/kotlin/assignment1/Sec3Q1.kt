@@ -13,17 +13,13 @@ fun main(args: Array<String>) {
 
     val fileName = args[0]
     val file = File(fileName)
-    val fileContent = file.bufferedReader().readLines()
+    val fileContent = file.bufferedReader().readLines().drop(1)
 
-    val resultCount = fileContent.mapIndexed { idx, line ->
-        return@mapIndexed if (idx == 0) {
-            0
-        } else {
-            line.sumBy { if (counter.readBit(MaskedDnaCharacter(it)) > scaledThreshold) 1 else 0 }
-        }
-    }.sum()
+    val resultCount = fileContent.asSequence().sumBy { line ->
+        line.sumBy { if (counter.readBit(MaskedDnaCharacter(it)) > scaledThreshold) 1 else 0 }
+    }
 
-    val fileLength = fileContent.sumBy { it.length }
+    val fileLength = fileContent.sumBy { it.filter { ch -> "ACGTacgt".contains(ch) }.length }
 
     println("Do your sanity check: resultCount = $resultCount, fileLength = $fileLength")
 
