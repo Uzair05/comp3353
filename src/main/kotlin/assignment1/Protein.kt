@@ -1,5 +1,15 @@
 package assignment1
 
-class ProteinCharacter(val symbol: Char) : Symbol(symbol, "FLIMVSPTAYHQNKDECWRG")
+class ProteinCharacter(val symbol: Char) : Symbol(symbol, "FLIMVSPTAYHQNKDECWRG") {
 
-class ProteinString(val string: List<ProteinCharacter>) : SymbolString<ProteinCharacter>(string)
+    companion object {
+        val alphabet = "FLIMVSPTAYHQNKDECWRG"
+    }
+
+}
+
+class ProteinString(override val string: List<ProteinCharacter>) : SymbolString<ProteinCharacter>(string) {
+
+    constructor(string: String) : this(string.toCharArray().map { ProteinCharacter(it) })
+
+}

@@ -2,7 +2,7 @@ package assignment1
 
 abstract class Symbol(
     private val symbol: Char,
-    alphabet: String
+    val alphabet: String
 ) {
 
     init {
@@ -25,6 +25,7 @@ abstract class Symbol(
         }
     }
 
+    @Override
     override fun hashCode(): Int {
         return symbol.hashCode()
     }

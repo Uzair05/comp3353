@@ -1,6 +1,6 @@
 package assignment1
 
-class DnaString(private val string: List<DnaCharacter>) : SymbolString<DnaCharacter>(string) {
+class DnaString(override val string: List<DnaCharacter>) : SymbolString<DnaCharacter>(string) {
 
     constructor(string: String) : this(string.toCharArray().map { DnaCharacter(it) })
 
@@ -15,7 +15,7 @@ class DnaString(private val string: List<DnaCharacter>) : SymbolString<DnaCharac
     }
 }
 
-class MaskedDnaString(private val string: List<MaskedDnaCharacter>) : SymbolString<MaskedDnaCharacter>(string) {
+class MaskedDnaString(override val string: List<MaskedDnaCharacter>) : SymbolString<MaskedDnaCharacter>(string) {
 
     constructor(string: String) : this(string.toCharArray().map { MaskedDnaCharacter(it) })
 
