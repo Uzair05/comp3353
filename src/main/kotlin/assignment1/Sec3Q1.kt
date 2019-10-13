@@ -4,7 +4,7 @@ import java.io.File
 
 fun main(args: Array<String>) {
 
-    check(args.size == 1) { println("Usage: args = [FILENAME]") }
+    check(args.size == 1) { "Usage: args = [FILENAME]" }
 
     val threshold = 0.7
     val k = 100
